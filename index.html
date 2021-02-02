@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- <script src="cFetch.js"></script> -->
+    <!-- <script src="node_modules/whatwg-fetch/fetch.js"></script> -->
+    <script>
+        async function loadFile(url) {
+            const req = await fetch(url);
+            return req.text();
+        }
+
+        function parseData(text) {
+            return JSON.parse(text);
+        }
+        loadFile('https://api.github.com/')
+            .then(parseData)
+            .then((obj) => {
+                console.dir(obj);
+            });
+    </script>
+</body>
+
+</html>
